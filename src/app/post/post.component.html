@@ -1,0 +1,20 @@
+<div class="alert alert-danger" role="alert" *ngIf="showError" style="position: fixed; top: 40px; left: 40%">
+  Le post est déjà à 0 like...
+</div>
+
+<div class="container mt-2">
+  <ul class="list-group">
+    <li class="list-group-item" [ngStyle]="{ backgroundColor: getColor(post) }" style="background-color: lightcoral">
+      <div class="d-flex justify-content-between">
+        <p>{{ post.title }}</p>
+        <p class="font-italic">{{ post.created_at | date:'EEE, d,MMMM, y'}}</p>
+        <button class="btn btn-xs btn-danger" (click)="deletePost(post.id)">X</button>
+      </div>
+      <p>{{ post.content }}
+      <div>
+          <button class="btn btn-success m-2" (click)="onLikePost(post)">{{ post.loveIts }} Likes 👍</button>
+      <button type="button" class="btn btn-danger" (click)="onUnlikePost(post)">Unlike 👎</button>
+      </div>
+    </li>
+  </ul>
+</div>

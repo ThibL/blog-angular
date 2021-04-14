@@ -1,0 +1,19 @@
+<div *ngIf="post">
+  <div class="container mt-2">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <p>{{ post.title }}</p>
+          <p class="font-italic">{{ post.created_at | date:'EEE, d,MMMM, y'}}</p>
+        </div>
+        <p>{{ post.content }}
+        <div>
+          <label>
+            <input type="button" class="btn btn-success m-2" value="{{ post.loveIts }} Likes 👍"/>
+          </label>
+          <input type="button" class="btn btn-danger" value="Unlike 👎" />
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

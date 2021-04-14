@@ -1,0 +1,28 @@
+<div class="container d-flex justify-content-center">
+  <h1>Nous contacter</h1>
+</div>
+<div class="mx-auto col-md-9">
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="model.email"
+             [ngClass]="{ 'is-invalid': contactForm.submitted && email.invalid }" required #email="ngModel">
+      <div class="invalid-feedback" *ngIf="contactForm.submitted && email.invalid">
+        <p *ngIf="email.errors?.required">Veuillez entrer votre email</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Message</label>
+      <textarea type="text" class="form-control" name="text" [(ngModel)]="model.text"
+                [ngClass]="{ 'is-invalid': contactForm.submitted && text.invalid }" required #text="ngModel" rows="9"></textarea>
+      <div class="invalid-feedback" *ngIf="contactForm.submitted && text.invalid">
+        <p *ngIf="text.errors?.required">Veuillez écrire au moins quelque chose...</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-danger mt-3">Envoyer</button>
+    </div>
+  </form>
+</div>
