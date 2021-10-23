@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../Interfaces/post';
 import {PostService} from '../post.service';
-import {Observable} from "rxjs";
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -26,7 +25,7 @@ export class PostComponent implements OnInit {
   }
 
   getColor(post: Post): string {
-    return post.loveIts >= 500 ? 'Lightblue' : 'lightCoral';
+    return post.loveIts > 0  ? 'Lightblue' : 'lightCoral';
   }
 
   onLikePost(post: Post): any {
@@ -36,12 +35,14 @@ export class PostComponent implements OnInit {
   }
 
   onUnlikePost(post: Post): any {
-    if (post.loveIts > 0) {
       post.loveIts -= 1;
       const newPost = {...post};
       return this.postService.unlike(post.id, newPost).subscribe();
-    } else {
-      this.showError = true;
-    }
+  }
+
+  displayPost(post: Post): any {
+    console.log('Router');
+    const postId = post ? post.id : null;
+    return this.router.navigate(['/blog', postId]);
   }
 }

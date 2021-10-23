@@ -1,10 +1,6 @@
-<div class="alert alert-danger" role="alert" *ngIf="showError" style="position: fixed; top: 40px; left: 40%">
-  Le post est déjà à 0 like...
-</div>
-
 <div class="container mt-2">
   <ul class="list-group">
-    <li class="list-group-item" [ngStyle]="{ backgroundColor: getColor(post) }" style="background-color: lightcoral">
+    <li class="list-group-item" [ngStyle]="{ backgroundColor: getColor(post) }" style="background-color: lightcoral" (click)="displayPost(post)">
       <div class="d-flex justify-content-between">
         <p>{{ post.title }}</p>
         <p class="font-italic">{{ post.created_at | date:'EEE, d,MMMM, y'}}</p>
